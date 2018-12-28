@@ -277,8 +277,14 @@ $(window).load(function() {
 
 $('.message-submit').click(function() {
   let text = $('.message-input').val();
-  send({ cmd: 'chat', text: text });
-  $('.message-input').val(null);
+  if (text != '') {
+    send({ cmd: 'chat', text: text });
+    $('.message-input').val(null);
+
+		lastSent[0] = text;
+		lastSent.unshift("");
+		lastSentPos = 0;
+  }
 });
 
 $(window).on('keydown', function(e) {
@@ -301,5 +307,5 @@ $(window).on('keydown', function(e) {
 			lastSentPos = 0;
 		}
   }
-})
+});
 
