@@ -1,0 +1,26 @@
+{
+  "name": "fridge",
+  "version": "1.0.0",
+  "description": "a minimal distraction free chat application",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackish-murderer/chat-service.git"
+  },
+  "engines": {
+    "node": ">= 8.10.0",
+    "npm": ">= 5.7.1"
+  },
+  "scripts": {
+    "start": "http-server ./resources -o -p 8080"
+  },
+  "author": "Blackish",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
+  "bugs": {
+    "url": "https://github.com/blackish-murderer/chat-service/issues"
+  },
+  "homepage": "https://github.com/hack-chat/chat-service#readme"
+}
