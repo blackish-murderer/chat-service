@@ -1,1 +1,1 @@
-simple chat service
+basic chat service
