@@ -412,7 +412,7 @@ Message Box
   height: 17px;
   margin: 0;
   padding-right: 20px;
-  width: 100%;
+  width: 95%;
 }
 .message-box textarea:focus:-webkit-placeholder {
   color: transparent;
