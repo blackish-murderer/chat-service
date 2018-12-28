@@ -5,11 +5,7 @@ function randomNick(minInt, maxInt) {
 }
 
 const verifyNickname = (nick) => /^[a-zA-Z0-9_]{1,24}$/.test(nick);
-/*
-function $(query) {
-	return document.querySelector(query);
-}
-*/
+
 function localStorageGet(key) {
 	try {
 		return window.localStorage[key]
@@ -24,7 +20,7 @@ function localStorageSet(key, val) {
 
 var ws;
 var myNick = localStorageGet('my-nick') || randomNick(10, 100);
-var myChannel = 'Fridge';
+var myChannel = 'CHATBOX';
 var lastSent = [""];
 var lastSentPos = 0;
 
@@ -130,13 +126,13 @@ function pushMessage(args) {
 	} else if (args.nick == '*') {
 		query = '<div class="message info">' + args.text + '</div>';
 	} else {
-    query = '<div class="message external"><div class="nick">' + args.nick + '</div><figure class="avatar"><img src="./icons/them.png" /></figure>' + args.text + '</div>';
+    query = '<div class="message external"><div class="nick">' + args.nick + '</div><figure class="avatar"><img src="icons/them.png" /></figure>' + args.text + '</div>';
   }
   $(query).appendTo($('#mCSB_1_container')).addClass('new');
   updateMessagesScrollbar();
   
 	unread += 1;
-	updateTitle();
+	updatePageTitle();
 }
 
 function send(data) {
@@ -152,7 +148,7 @@ window.onfocus = function () {
 	windowActive = true;
 
   $messages.mCustomScrollbar('scrollTo', 'last');
-	updateTitle();
+	updatePageTitle();
 }
 
 window.onblur = function () {
@@ -161,7 +157,7 @@ window.onblur = function () {
 
 window.onscroll = function () {
 	if (isAtBottom()) {
-		updateTitle();
+		updatePageTitle();
 	}
 }
 
@@ -169,7 +165,7 @@ function isAtBottom() {
 	return true;
 }
 
-function updateTitle() {
+function updatePageTitle() {
 	if (windowActive && isAtBottom()) {
 		unread = 0;
 	}
@@ -178,7 +174,7 @@ function updateTitle() {
 	if (myChannel) {
 		title = myChannel;
 	} else {
-		title = "Fridge";
+		title = 'CHATBOX';
 	}
 
 	if (unread > 0) {
@@ -193,9 +189,9 @@ var onlineUsers = [];
 var ignoredUsers = [];
 
 function userAdd(nick) {
-  let myImg = './icons/them.png';
+  let myImg = 'icons/them.png';
   if (myNick.split('#')[0] == nick) {
-    myImg = './icons/self.png';
+    myImg = 'icons/self.png';
   }
   $('<div class="user append"><figure class="avatar"><img src="' + myImg + '" /></figure>' + nick + '</div>').appendTo($('#mCSB_2_container')).addClass('new');
 	onlineUsers.push(nick);
